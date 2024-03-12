@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 var cors = require('cors');
- 
 app.use(cors())
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
@@ -30,9 +29,11 @@ app.listen(PORT, ()=>{
 // connection with db
 
 const dbConnect = require("./config/database");
+const router = require('./route/todos');
 dbConnect();
 
 // default route 
 app.get("/", (req,res) => {
    res.send(`<h1>hello ji</h1>`);
 })
+
