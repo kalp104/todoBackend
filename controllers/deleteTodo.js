@@ -2,11 +2,11 @@ const Todo = require("../model/todo");
 
 exports.deleteTodo = async (req, res) => {
     try {
-        // Extract title from request parameters
-        const { tit } = req.params;
+        // Extract ID from request parameters
+        const { id } = req.params;
 
-        // Find and delete the todo
-        const deletedTodo = await Todo.findOneAndDelete({ title: tit });
+        // Find and delete the todo by ID
+        const deletedTodo = await Todo.findByIdAndDelete(id);
 
         if (!deletedTodo) {
             return res.status(404).json({
